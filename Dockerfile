@@ -3,7 +3,6 @@
 # Global ARG declarations (available to the entire Dockerfile)
 ARG PROJ_SHORT_NAME=twp
 
-
 # Stage 1: Base image.
 FROM amazonlinux:2023.6.20241031.0 AS base
 
@@ -35,7 +34,7 @@ WORKDIR /opt/twp/auth
 RUN python3 -m venv venv
 
 # Activate the virtual environment and install dependencies in the same shell
-COPY --from=src requirements.txt .
+COPY requirements.txt .
 RUN bash -c "source venv/bin/activate && pip install -r requirements.txt"
 
 
